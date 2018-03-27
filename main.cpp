@@ -1,33 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <cstring>
+
 using namespace std;
-
-
-
 
 int main()
 {
-    double x,q,z;
-    while(true)
+    double rate, cost;
+    int  duration, time;
+    string dayInput;
+    cout<<"Please enter the time";
+    do {
+    cin>>time;
+
+    }while(time<0 || time>24);
+    cout<<"Please enter the day";
+    cin>>dayInput;
+    cout<<"Please enter duration of the call";
+    cin>>duration;
+    for (int i = 0; i<=2; i++)
     {
-        cout<<"please enter you salary: ";
-        cin>>x;
-        z=0.076;
-        cout<<"salary retroactive: "<<(x*z)<<endl;
-        cout<<"new monthly salary: "<<((x*z)+x)<<endl;
-        cout<<"the new annual salary: "<<(((x*z)+x)*6)+(x*6)<<endl;
-        cout<<"again(1) & exit(2): ";
-        cin>>q;
-        while ((q!=1)&&(q!=2))
-        {
-            cout<<"error"<<endl;
-            cin>>q;
+        dayInput[i] = toupper(dayInput[i]);
+    }
+    if((time>=8 && time<18) && (dayInput == "MO" || dayInput == "TU" || dayInput == "WE" || dayInput == "TH" || dayInput == "FR" ))
+        {rate = 0.4;
+        cost = duration * rate;
+
         }
-        if (q==2)
-        {
-            exit(0);
-        }
+    else if (!(time>=8 && time<18) && (dayInput == "MO" || dayInput == "TU" || dayInput == "WE" || dayInput == "TH" || dayInput == "FR" ))
+      {
+
+        rate = 0.25;
+        cost = duration * rate;
+
+}
+    else
+    {
+
+
+        rate = 0.15;
+        cost = duration * rate;
+
     }
 
-
+    cout<<"the cost is : "<<cost<<endl;
     return 0;
+
 }
